@@ -1,33 +1,38 @@
 ---
-- name: CHECK KEYS
-  hosts: localhost
-  become: yes
-  become_user: root
-  tasks:
-    - name: Check ssl dir
-      file:
-        path: /etc/ssl/repo/
-        state: directory
-    - name: Check keys
-      stat:
-        path: /etc/ssl/repo/dci.key
-      register: file_key
-    - name: Check Cert
-      stat:
-        path: /etc/ssl/repo/dci.crt
-      register: file_cert
-    - name: Get keys from DCI
-      dci_keys:
-        remoteci_id: '{{ remoteci_id }}'
-      register: keys
-      when: file_key.stat.exists == False or file_cert.stat.exists == False
-    - name: Create cert file
-      copy:
-        content: '{{ keys.cert }}'
-        dest: /etc/ssl/repo/dci.crt
-      when: keys.cert is defined
-    - name: Create key file
-      copy:
-        content: '{{ keys.key }}'
-        dest: /etc/ssl/repo/dci.key
-      when: keys.key is defined
+- name: Ensure the SSL directory exist
+  file:
+    path: /etc/ssl/repo/
+    state: directory
+  become: True
+
+- name: Verify if the remoteci key is already installed
+  stat:
+    path: /etc/ssl/repo/dci.key
+  register: file_key
+  become: True
+
+- name: Verify is the remoteci certificate is already installed
+  stat:
+    path: /etc/ssl/repo/dci.crt
+  register: file_cert
+  become: True
+
+- name: Retrieve remoteci key and certificate from DCI
+  dci_keys:
+    remoteci_id: '{{ remoteci_id }}'
+  register: keys
+  when: file_key.stat.exists == False or file_cert.stat.exists == False
+
+- name: Create the certificate file
+  copy:
+    content: '{{ keys.cert }}'
+    dest: /etc/ssl/repo/dci.crt
+  when: keys.cert is defined
+  become: True
+
+- name: Create the private key file
+  copy:
+    content: '{{ keys.key }}'
+    dest: /etc/ssl/repo/dci.key
+  when: keys.key is defined
+  become: True
