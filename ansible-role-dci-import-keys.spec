@@ -1,13 +1,13 @@
 Name:       ansible-role-dci-import-keys
-Version:    0.0.VERS
-Release:    1%{?dist}
+Version:    0.0.1
+Release:    1.VERS%{?dist}
 Summary:    ansible-role-dci-import-keys
 License:    ASL 2.0
 URL:        https://github.com/redhat-cip/ansible-role-dci-import-keys
 Source0:    ansible-role-dci-import-keys-%{version}.tar.gz
 
 BuildArch:  noarch
-Requires:   ansible
+Requires:   dci-ansible
 
 %description
 An Ansible role to automate the key import process
