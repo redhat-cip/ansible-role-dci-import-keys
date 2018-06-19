@@ -7,7 +7,7 @@ URL:        https://github.com/redhat-cip/ansible-role-dci-import-keys
 Source0:    ansible-role-dci-import-keys-%{version}.tar.gz
 
 BuildArch:  noarch
-Requires:   ansible
+Requires:   dci-ansible
 
 %description
 An Ansible role to automate the key import process

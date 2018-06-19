@@ -1,11 +1,12 @@
-# ansible-role-dci-feeders
+# ansible-role-dci-import-keys
 
-An Ansible role that deploys the necessary playbook for a host to act as a DCI feeder
+An Ansible role that automates the process of key retrieval for DCI's RemoteCI.
 
 
 ## Pre-requisites
 
-This role heavily relies on [python-dciclient](https://github.com/redhat-cip/python-dciclient) and [dci-ansible](https://github.com/redhat-cip/dci-ansible).
+This role relies on [python-dciclient](https://github.com/redhat-cip/python-dciclient) and [dci-ansible](https://github.com/redhat-cip/dci-ansible).
+
 If those are not installed, they should be installed before using this role.
 
 
@@ -14,10 +15,24 @@ If those are not installed, they should be installed before using this role.
 
 The variables of this role are :
 
-  * `components`: A list of components to check if a new version is available.
+  * `remoteci_id`: ID of the RemoteCI to retrieve the keys for
 
 
 ### Example
 
 ```
----
+- hosts: localhost
+  vars:
+    remoteci_id: XXX
+  roles:
+    - dci-import-keys
+```
+
+### License
+
+Apache 2.0
+
+
+### Author Information
+
+Distributed-CI Team  <distributed-ci@redhat.com>
