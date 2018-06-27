@@ -19,7 +19,7 @@
 
 - name: Retrieve remoteci key and certificate from DCI
   dci_keys:
-    remoteci_id: '{{ remoteci_id }}'
+    remoteci_id: '{{ dci_import_keys_remoteci_id }}'
   register: keys
   when: file_key.stat.exists == False or file_cert.stat.exists == False
 
@@ -34,5 +34,6 @@
   copy:
     content: '{{ keys.key }}'
     dest: /etc/ssl/repo/dci.key
+    mode: 0600
   when: keys.key is defined
   become: True

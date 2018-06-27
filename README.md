@@ -12,10 +12,9 @@ If those are not installed, they should be installed before using this role.
 
 ## Role Variables
 
-
-The variables of this role are :
-
-  * `remoteci_id`: ID of the RemoteCI to retrieve the keys for
+| Variable name | Required | Default | Type | Description |
+|---------------|----------|---------|------|-------------|
+| dci_import_keys_remoteci_id | True | N/A | UUID | ID of the remoteci to retrieve the SSL info for |
 
 
 ### Example
@@ -23,7 +22,7 @@ The variables of this role are :
 ```
 - hosts: localhost
   vars:
-    remoteci_id: XXX
+    dci_import_keys_remoteci_id: XXX
   roles:
     - dci-import-keys
 ```
