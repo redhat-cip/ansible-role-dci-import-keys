@@ -21,7 +21,7 @@
   dci_keys:
     remoteci_id: '{{ dci_import_keys_remoteci_id }}'
   register: keys
-  when: file_key.stat.exists == False or file_cert.stat.exists == False
+  when: not file_key.stat.exists or not file_cert.stat.exists
 
 - name: Create the certificate file
   copy:
