@@ -22,6 +22,7 @@ An Ansible role to automate the key import process
 mkdir -p %{buildroot}%{_datadir}/dci/roles/dci-import-keys
 chmod 755 %{buildroot}%{_datadir}/dci/roles/dci-import-keys
 
+cp -r defaults %{buildroot}%{_datadir}/dci/roles/dci-import-keys
 cp -r tasks %{buildroot}%{_datadir}/dci/roles/dci-import-keys
 
 

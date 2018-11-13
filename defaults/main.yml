@@ -1,0 +1,3 @@
+---
+dci_import_keys_sslclientcert: /etc/ssl/repo/dci.crt
+dci_import_keys_sslclientkey: /etc/ssl/repo/dci.key

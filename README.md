@@ -15,6 +15,8 @@ If those are not installed, they should be installed before using this role.
 | Variable name | Required | Default | Type | Description |
 |---------------|----------|---------|------|-------------|
 | dci_import_keys_remoteci_id | True | N/A | UUID | ID of the remoteci to retrieve the SSL info for |
+| dci_import_keys_sslclientcert | False | /etc/ssl/repo/dci.cert | Path | Path to the DCI SSL client certificate |
+| dci_import_keys_sslclientkey | False | /etc/ssl/repo/dci.key | Path | Path to the DCI SSL client key |
 
 
 ### Example

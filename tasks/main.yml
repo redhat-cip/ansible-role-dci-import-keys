@@ -1,19 +1,22 @@
 ---
-- name: Ensure the SSL directory exist
+- name: Ensure the SSL directories exist
   file:
-    path: /etc/ssl/repo/
+    path: '{{ item|dirname }}'
     state: directory
   become: True
+  with_items:
+    - '{{ dci_import_keys_sslclientcert }}'
+    - '{{ dci_import_keys_sslclientkey }}'
 
 - name: Verify if the remoteci key is already installed
   stat:
-    path: /etc/ssl/repo/dci.key
+    path: '{{ dci_import_keys_sslclientkey }}'
   register: file_key
   become: True
 
 - name: Verify is the remoteci certificate is already installed
   stat:
-    path: /etc/ssl/repo/dci.crt
+    path: '{{ dci_import_keys_sslclientcert }}'
   register: file_cert
   become: True
 
@@ -26,14 +29,14 @@
 - name: Create the certificate file
   copy:
     content: '{{ keys.cert }}'
-    dest: /etc/ssl/repo/dci.crt
+    dest: '{{ dci_import_keys_sslclientcert }}'
   when: keys.cert is defined
   become: True
 
 - name: Create the private key file
   copy:
     content: '{{ keys.key }}'
-    dest: /etc/ssl/repo/dci.key
+    dest: '{{ dci_import_keys_sslclientkey }}'
     mode: 0600
   when: keys.key is defined
   become: True
