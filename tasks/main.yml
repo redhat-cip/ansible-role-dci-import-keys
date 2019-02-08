@@ -3,7 +3,7 @@
   file:
     path: '{{ item|dirname }}'
     state: directory
-  become: True
+  become: true
   with_items:
     - '{{ dci_import_keys_sslclientcert }}'
     - '{{ dci_import_keys_sslclientkey }}'
@@ -12,13 +12,13 @@
   stat:
     path: '{{ dci_import_keys_sslclientkey }}'
   register: file_key
-  become: True
+  become: true
 
 - name: Verify is the remoteci certificate is already installed
   stat:
     path: '{{ dci_import_keys_sslclientcert }}'
   register: file_cert
-  become: True
+  become: true
 
 - name: Retrieve remoteci key and certificate from DCI
   dci_keys:
@@ -31,7 +31,7 @@
     content: '{{ keys.cert }}'
     dest: '{{ dci_import_keys_sslclientcert }}'
   when: keys.cert is defined
-  become: True
+  become: true
 
 - name: Create the private key file
   copy:
@@ -39,4 +39,4 @@
     dest: '{{ dci_import_keys_sslclientkey }}'
     mode: 0600
   when: keys.key is defined
-  become: True
+  become: true
