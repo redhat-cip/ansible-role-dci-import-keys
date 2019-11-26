@@ -8,23 +8,10 @@
     - '{{ dci_import_keys_sslclientcert }}'
     - '{{ dci_import_keys_sslclientkey }}'
 
-- name: Verify if the remoteci key is already installed
-  stat:
-    path: '{{ dci_import_keys_sslclientkey }}'
-  register: file_key
-  become: true
-
-- name: Verify is the remoteci certificate is already installed
-  stat:
-    path: '{{ dci_import_keys_sslclientcert }}'
-  register: file_cert
-  become: true
-
 - name: Retrieve remoteci key and certificate from DCI
   dci_keys:
     remoteci_id: '{{ dci_import_keys_remoteci_id }}'
   register: keys
-  when: not file_key.stat.exists or not file_cert.stat.exists
 
 - name: Create the certificate file
   copy:
