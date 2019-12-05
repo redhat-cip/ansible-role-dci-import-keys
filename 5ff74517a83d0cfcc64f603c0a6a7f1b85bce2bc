@@ -1,0 +1,8 @@
+Code-Review+2: Guillaume Vincent <gvincent@redhat.com>
+Workflow+1: François Charlier <francois.charlier@redhat.com>
+Verified+2: Zuul CI <zuul@softwarefactory-project.io>
+Submitted-by: Zuul CI <zuul@softwarefactory-project.io>
+Submitted-at: Thu, 05 Dec 2019 11:12:20 +0000
+Reviewed-on: https://softwarefactory-project.io/r/17081
+Project: ansible-role-dci-import-keys
+Branch: refs/heads/master
