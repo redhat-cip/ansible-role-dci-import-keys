@@ -4,8 +4,8 @@ dependency:
   enabled: false
 driver:
   name: docker
-lint:
-  name: yamllint
+lint: |
+  yamllint tasks
 platforms:
   - name: el7
     image: centos:7
@@ -13,6 +13,7 @@ platforms:
     capabilities:
       - SYS_ADMIN
 provisioner:
+  log: true
   name: ansible
   connection_options:
     ansible_user: centos
