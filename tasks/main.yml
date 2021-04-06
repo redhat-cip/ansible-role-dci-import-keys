@@ -12,6 +12,7 @@
   dci_keys:
     remoteci_id: '{{ dci_import_keys_remoteci_id }}'
   register: keys
+  no_log: true
 
 - name: Create the certificate file
   copy:
