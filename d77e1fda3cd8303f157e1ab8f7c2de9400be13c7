@@ -1,0 +1,8 @@
+Code-Review+2: Haïkel Guémar <hguemar@fedoraproject.org>
+Workflow+1: Haïkel Guémar <hguemar@fedoraproject.org>
+Verified+2: Zuul CI <zuul@softwarefactory-project.io>
+Submitted-by: Zuul CI <zuul@softwarefactory-project.io>
+Submitted-at: Wed, 07 Apr 2021 09:35:16 +0000
+Reviewed-on: https://softwarefactory-project.io/r/c/ansible-role-dci-import-keys/+/21550
+Project: ansible-role-dci-import-keys
+Branch: refs/heads/master
